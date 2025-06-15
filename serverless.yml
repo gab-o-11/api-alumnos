@@ -1,12 +1,12 @@
-org: geraldocolchado
+org: gaboooo
 service: api-alumnos
 
 provider:
   name: aws
-  runtime: python3.12
+  runtime: python3.13
   timeout: 30  
   iam:
-    role: arn:aws:iam::498917627164:role/LabRole
+    role: arn:aws:iam::044477782735:role/LabRole
 
 functions:
   listar:
@@ -18,7 +18,7 @@ functions:
           cors: true
           integration: lambda
   crear:
-    handler: CrearAlumno.lambda_handler
+    handler: CrearAlumnos.lambda_handler
     events:
       - http:
           path: /alumnos/crear
@@ -26,23 +26,23 @@ functions:
           cors: true
           integration: lambda
   modificar:
-    handler: ModificarAlumno.lambda_handler
+    handler: ModificarAlumnos.lambda_handler
     events: 
       - http:
           path: /alumnos/modificar
-          method: post
+          method: put
           cors: true
           lambda: lambda
   eliminar:
-    handler: EliminarAlumno.lambda_handler
+    handler: EliminarAlumnos.lambda_handler
     events: 
       - http:
           path: /alumnos/eliminar
-          method: post
+          method: delete
           cors: true
           lambda: lambda 
   buscar:
-    handler: BuscarAlumno.lambda_handler
+    handler: BuscarAlumnos.lambda_handler
     events: 
       - http:
           path: /alumnos/buscar
